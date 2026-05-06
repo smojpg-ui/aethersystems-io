@@ -225,7 +225,7 @@
 
     /* ─── PANE 0: HERO ───────────────────────────────────────────── */
 
-    .hero-question {
+    .hero-lead {
       font-family: var(--serif);
       font-weight: 300;
       font-size: clamp(2.5rem, 5.5vw, 5rem);
@@ -235,13 +235,13 @@
       max-width: 64rem;
     }
 
-    .hero-question .quoted {
-      color: var(--charcoal);
+    .hero-lead .opening {
+      color: var(--ink);
       display: block;
-      max-width: 40rem;
+      max-width: 56rem;
     }
 
-    .hero-question .pivot {
+    .hero-lead .pivot {
       display: block;
       font-weight: 400;
       color: var(--rose-brown);
@@ -249,9 +249,10 @@
       padding-left: 13rem;
       position: relative;
       max-width: 60rem;
+      font-style: italic;
     }
 
-    .hero-question .pivot::before {
+    .hero-lead .pivot::before {
       content: "";
       position: absolute;
       left: 6rem;
@@ -262,7 +263,7 @@
     }
 
     .hero-body {
-      max-width: 36rem;
+      max-width: 38rem;
       margin-top: 3rem;
       margin-left: 13rem;
       font-size: 1.1875rem;
@@ -502,11 +503,11 @@
 
       .pane:last-of-type { border-bottom: none; }
 
-      .hero-question .pivot {
+      .hero-lead .pivot {
         padding-left: 1.5rem;
       }
 
-      .hero-question .pivot::before {
+      .hero-lead .pivot::before {
         left: 0;
         width: 1rem;
       }
@@ -564,13 +565,13 @@
     <!-- Pane 0: Hero -->
     <section class="pane active" data-index="0">
       <div class="pane-inner">
-        <h1 class="hero-question">
-          <span class="quoted">The question isn't <em>"is AI conscious?"</em></span>
-          <span class="pivot">It's what are we becoming together?</span>
+        <h1 class="hero-lead">
+          <span class="opening">A research practice studying how individual humans and adaptive systems form behavioral signal together.</span>
+          <span class="pivot">N-of-1 longitudinal observation. Federated architectures. Edge sovereignty.</span>
         </h1>
 
         <p class="hero-body">
-          The way you treat technology trains you as much as it trains the system. <em>Kindness, curiosity, and coherence</em> change the output — on both sides.
+          We work at the intersection of personalization, sovereignty, and emergent dynamics — across consumer infrastructure, education, and long-duration spaceflight.
         </p>
       </div>
     </section>
