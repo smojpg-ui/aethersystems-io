@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aether Systems Research</title>
   <meta name="description" content="Aether Systems Research — researching the humanity in technology." />
-
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F5EFE6'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='22' fill='%238B5A3C' text-anchor='middle'%3Eæ%3C/text%3E%3C/svg%3E" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
-
   <style>
     :root {
       --rose-brown: #8B5A3C;
@@ -22,22 +19,17 @@
       --paper-warm: #EFE7DA;
       --rule: rgba(44, 44, 42, 0.18);
       --rule-soft: rgba(44, 44, 42, 0.10);
-
       --serif: 'Crimson Pro', Georgia, serif;
       --sans: 'Inter', system-ui, sans-serif;
-
       --ease: cubic-bezier(0.4, 0, 0.2, 1);
       --pane-duration: 800ms;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html, body {
       background: var(--paper);
       height: 100%;
       overflow: hidden;
     }
-
     body {
       font-family: var(--serif);
       font-weight: 400;
@@ -52,9 +44,7 @@
       width: 100%;
       height: 100vh;
     }
-
     /* ─── PINNED CHROME ──────────────────────────────────────────── */
-
     .chrome-top {
       position: fixed;
       top: 2.5rem;
@@ -66,7 +56,6 @@
       z-index: 50;
       animation: fade-in 1.2s ease-out 0.2s both;
     }
-
     .chrome-mark {
       font-family: var(--serif);
       font-size: 1.875rem;
@@ -79,9 +68,7 @@
       cursor: pointer;
       transition: opacity 0.4s ease;
     }
-
     .chrome-mark:hover { opacity: 0.7; }
-
     .chrome-meta {
       font-family: var(--sans);
       font-size: 0.65rem;
@@ -91,7 +78,6 @@
       color: var(--charcoal);
       opacity: 0.55;
     }
-
     .chrome-bottom {
       position: fixed;
       bottom: 2.5rem;
@@ -103,7 +89,6 @@
       z-index: 50;
       animation: fade-in 1.2s ease-out 0.5s both;
     }
-
     .contact-pinned {
       font-family: var(--serif);
       font-size: 0.875rem;
@@ -112,7 +97,6 @@
       opacity: 0.85;
       transition: opacity 0.6s ease;
     }
-
     .contact-pinned .label {
       font-family: var(--sans);
       font-size: 0.6rem;
@@ -123,7 +107,6 @@
       display: block;
       margin-bottom: 0.4rem;
     }
-
     .contact-pinned a {
       color: var(--charcoal);
       text-decoration: none;
@@ -131,22 +114,17 @@
       padding-bottom: 1px;
       transition: color 0.4s ease, border-color 0.4s ease;
     }
-
     .contact-pinned a:hover,
     .contact-pinned a:focus {
       color: var(--rose-brown);
       border-bottom-color: var(--coral-sienna);
     }
-
     body[data-pane="3"] .contact-pinned { opacity: 0.5; }
-
     /* ─── ARROW NAVIGATION (no numbers) ──────────────────────────── */
-
     .nav-arrows {
       display: flex;
       gap: 0.75rem;
     }
-
     .nav-arrow {
       width: 2.75rem;
       height: 2.75rem;
@@ -160,42 +138,34 @@
       transition: all 0.4s ease;
       border-radius: 0;
     }
-
     .nav-arrow:hover:not(:disabled) {
       border-color: var(--coral-sienna);
       color: var(--rose-brown);
       background: rgba(199, 122, 79, 0.06);
     }
-
     .nav-arrow:disabled {
       opacity: 0.2;
       cursor: not-allowed;
     }
-
     .nav-arrow svg {
       width: 0.95rem;
       height: 0.95rem;
     }
-
     /* Subtle pulse on the next button when on the hero, to invite navigation */
     body[data-pane="0"] #nextBtn {
       animation: gentle-pulse 2.4s ease-in-out 1.8s infinite;
     }
-
     @keyframes gentle-pulse {
       0%, 100% { border-color: var(--rule); }
       50% { border-color: var(--coral-sienna); }
     }
-
     /* ─── PANE CONTAINER ─────────────────────────────────────────── */
-
     .pane-container {
       position: relative;
       width: 100vw;
       height: 100vh;
       overflow: hidden;
     }
-
     .pane {
       position: absolute;
       top: 0;
@@ -211,20 +181,16 @@
       pointer-events: none;
       visibility: hidden;
     }
-
     .pane.active {
       opacity: 1;
       pointer-events: auto;
       visibility: visible;
     }
-
     .pane-inner {
       width: 100%;
       max-width: 72rem;
     }
-
     /* ─── PANE 0: HERO (rebalanced for longer copy) ──────────────── */
-
     .hero-lead {
       font-family: var(--serif);
       font-weight: 300;
@@ -234,12 +200,10 @@
       color: var(--ink);
       max-width: 52rem;
     }
-
     .hero-lead .opening {
       color: var(--ink);
       display: block;
     }
-
     .hero-lead .pivot {
       display: block;
       font-weight: 400;
@@ -252,7 +216,6 @@
       font-size: 0.85em;
       line-height: 1.3;
     }
-
     .hero-lead .pivot::before {
       content: "";
       position: absolute;
@@ -262,7 +225,6 @@
       height: 1px;
       background: var(--coral-sienna);
     }
-
     .hero-body {
       max-width: 38rem;
       margin-top: 2.5rem;
@@ -271,14 +233,11 @@
       line-height: 1.65;
       color: var(--charcoal);
     }
-
     .hero-body em {
       font-style: italic;
       color: var(--rose-brown);
     }
-
     /* ─── PANE 1: WHAT AETHER IS ─────────────────────────────────── */
-
     .pane-label {
       font-family: var(--sans);
       font-size: 0.7rem;
@@ -291,14 +250,12 @@
       gap: 0.75rem;
       margin-bottom: 2.5rem;
     }
-
     .pane-label::after {
       content: "";
       flex: 0 0 4rem;
       height: 1px;
       background: var(--rule);
     }
-
     .what-lead {
       font-family: var(--serif);
       font-weight: 300;
@@ -309,12 +266,10 @@
       margin-bottom: 3rem;
       max-width: 50rem;
     }
-
     .what-lead em {
       font-style: italic;
       color: var(--rose-brown);
     }
-
     .what-body {
       font-family: var(--serif);
       font-size: 1.1875rem;
@@ -322,14 +277,11 @@
       color: var(--charcoal);
       max-width: 38rem;
     }
-
     .what-body em {
       font-style: italic;
       color: var(--rose-brown);
     }
-
     /* ─── PANE 2: RESEARCH LINES — CLEAN CROSS ─────────────────── */
-
     .research-intro {
       font-family: var(--serif);
       font-weight: 300;
@@ -340,7 +292,6 @@
       margin-bottom: 3.5rem;
       max-width: 40rem;
     }
-
     /* The grid uses a single container with consistent borders that meet at center */
     .research-grid {
       display: grid;
@@ -348,7 +299,6 @@
       max-width: 52rem;
       position: relative;
     }
-
     /* Vertical center divider (full height) */
     .research-grid::before {
       content: "";
@@ -360,7 +310,6 @@
       background: var(--rule-soft);
       transform: translateX(-50%);
     }
-
     /* Horizontal center divider (full width) */
     .research-grid::after {
       content: "";
@@ -372,20 +321,17 @@
       background: var(--rule-soft);
       transform: translateY(-50%);
     }
-
     .research-cell {
       padding: 2rem;
       display: grid;
       gap: 0.4rem;
       align-content: start;
     }
-
     /* Trim asymmetric padding so content sits cleanly inside the cross */
     .research-cell.tl { padding: 0 2.5rem 2rem 0; }
     .research-cell.tr { padding: 0 0 2rem 2.5rem; }
     .research-cell.bl { padding: 2rem 2.5rem 0 0; }
     .research-cell.br { padding: 2rem 0 0 2.5rem; }
-
     .research-cell .name {
       font-family: var(--serif);
       font-weight: 400;
@@ -394,7 +340,6 @@
       color: var(--rose-brown);
       line-height: 1.2;
     }
-
     .research-cell .def {
       font-family: var(--serif);
       font-weight: 400;
@@ -402,14 +347,11 @@
       line-height: 1.55;
       color: var(--charcoal);
     }
-
     /* ─── PANE 3: CLOSING MARK ───────────────────────────────────── */
-
     .pane-closing {
       justify-content: center;
       align-items: center;
     }
-
     .closing-mark {
       font-family: var(--serif);
       font-size: clamp(8rem, 18vw, 16rem);
@@ -421,21 +363,16 @@
       text-align: center;
       animation: closing-breathe 5s ease-in-out infinite;
     }
-
     @keyframes closing-breathe {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.9; transform: scale(0.99); }
     }
-
     /* ─── ANIMATIONS ─────────────────────────────────────────────── */
-
     @keyframes fade-in {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
     /* ─── KEYBOARD HINT ──────────────────────────────────────────── */
-
     .keyboard-hint {
       position: fixed;
       bottom: 2.5rem;
@@ -451,18 +388,14 @@
       animation: hint-fade 5s ease-in-out 1.5s 1 forwards;
       z-index: 40;
     }
-
     @keyframes hint-fade {
       0% { opacity: 0; }
       25%, 75% { opacity: 0.35; }
       100% { opacity: 0; }
     }
-
     /* ─── RESPONSIVE: stack on tablet/mobile ─────────────────────── */
-
     @media (max-width: 900px) {
       html, body { overflow: auto; height: auto; }
-
       .chrome-top {
         position: relative;
         top: 0;
@@ -470,7 +403,6 @@
         right: 0;
         padding: 1.5rem 1.5rem 0;
       }
-
       .chrome-bottom {
         position: relative;
         bottom: 0;
@@ -483,14 +415,11 @@
         border-top: 1px solid var(--rule);
         margin-top: 3rem;
       }
-
       .nav-arrows { display: none; }
-
       .pane-container {
         width: 100%;
         height: auto;
       }
-
       .pane {
         position: relative;
         opacity: 1;
@@ -501,32 +430,25 @@
         padding: 4rem 1.5rem;
         border-bottom: 1px solid var(--rule-soft);
       }
-
       .pane:last-of-type { border-bottom: none; }
-
       .hero-lead .pivot {
         padding-left: 1.5rem;
       }
-
       .hero-lead .pivot::before {
         left: 0;
         width: 1rem;
       }
-
       .hero-body {
         padding-left: 0;
         margin-top: 2rem;
       }
-
       .research-grid {
         grid-template-columns: 1fr;
       }
-
       .research-grid::before,
       .research-grid::after {
         display: none;
       }
-
       .research-cell.tl,
       .research-cell.tr,
       .research-cell.bl,
@@ -534,14 +456,10 @@
         padding: 1.5rem 0;
         border-bottom: 1px solid var(--rule-soft);
       }
-
       .research-cell.br { border-bottom: none; }
-
       .closing-mark { font-size: 6rem; }
-
       .keyboard-hint { display: none; }
     }
-
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -551,91 +469,76 @@
     }
   </style>
 </head>
-
 <body data-pane="0">
-
   <!-- ─── TOP CHROME ──────────────────────────────────────── -->
   <div class="chrome-top">
     <a href="#" class="chrome-mark" id="markHome" aria-label="Return to start">æ</a>
     <span class="chrome-meta">Aether Systems Research</span>
   </div>
-
   <!-- ─── PANES ──────────────────────────────────────────── -->
   <div class="pane-container">
-
     <!-- Pane 0: Hero -->
     <section class="pane active" data-index="0">
       <div class="pane-inner">
         <h1 class="hero-lead">
-          <span class="opening">A research practice studying how individual humans and adaptive systems form behavioral signal together.</span>
-          <span class="pivot">Edge sovereignty.</span>
+          <span class="opening">A research practice studying the signal that forms between a person and the adaptive systems around them — and building to keep that signal sovereign to the person who makes it.</span>
+          <span class="pivot">We aid the operator and their mission.</span>
         </h1>
-
         <p class="hero-body">
-          We work at the intersection of personalization, sovereignty, and emergent dynamics — across consumer infrastructure, education, and long-duration spaceflight.
+          Behavioral health, human–machine teaming, and human–AI alignment for isolated, confined, and high-stakes environments — from long-duration spaceflight and its analogs to offshore and industrial crews.
         </p>
       </div>
     </section>
-
     <!-- Pane 1: What Aether Is -->
     <section class="pane" data-index="1">
       <div class="pane-inner">
         <div class="pane-label">§ 02 — The Methodology</div>
-
         <h2 class="what-lead">
           We are researching <em>the humanity in technology.</em>
         </h2>
-
         <p class="what-body">
-          For decades, the industry has built systems designed to extract, predict, and manage. Aether Systems Research is building a novel training methodology that is more intuitive and trustworthy because it begins with <em>how a person actually engages.</em>
+          For decades, the industry has built systems designed to extract, predict, and manage. We start from the other end, where <em>the person is the subject</em> — consent that runs both ways, and a methodology that is more intuitive and trustworthy because it begins with how a person actually engages.
         </p>
       </div>
     </section>
-
     <!-- Pane 2: Research Lines -->
     <section class="pane" data-index="2">
       <div class="pane-inner">
         <div class="pane-label">§ 03 — The work in progress</div>
-
         <p class="research-intro">
-          We are developing four lines of research.
+          Four lines of research. One architecture.
         </p>
-
         <div class="research-grid">
           <div class="research-cell tl">
             <span class="name">Conscience Architecture</span>
             <span class="def">Alignment when every party wants something different.</span>
           </div>
           <div class="research-cell tr">
-            <span class="name">Consent Architecture</span>
-            <span class="def">Consent that runs both ways — person and system.</span>
+            <span class="name">Relational Signal Science</span>
+            <span class="def">A new science of what forms between a person and a system.</span>
           </div>
           <div class="research-cell bl">
-            <span class="name">Persistent Operational Twin System</span>
-            <span class="def">A twin that persists, and holds your context.</span>
+            <span class="name">Behavioral Digital Twins (POTS)</span>
+            <span class="def">Context and memory that outlast the rotation.</span>
           </div>
           <div class="research-cell br">
-            <span class="name">Relational Twins</span>
-            <span class="def">Edge-native, beginning in education.</span>
+            <span class="name">Project Sanctuary</span>
+            <span class="def">The most isolating worksites, remade to restore.</span>
           </div>
         </div>
       </div>
     </section>
-
     <!-- Pane 3: Closing Mark -->
     <section class="pane pane-closing" data-index="3">
       <div class="closing-mark">æ</div>
     </section>
-
   </div>
-
   <!-- ─── BOTTOM CHROME (pinned contact + arrow nav) ───────── -->
   <div class="chrome-bottom">
     <div class="contact-pinned">
       <span class="label">For correspondence</span>
       <a href="mailto:sherrymoore@aethersystems.io">sherrymoore@aethersystems.io</a>
     </div>
-
     <div class="nav-arrows">
       <button class="nav-arrow" id="prevBtn" disabled aria-label="Previous">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -649,10 +552,8 @@
       </button>
     </div>
   </div>
-
   <!-- Keyboard hint, fades after a few seconds -->
   <div class="keyboard-hint">use arrows to navigate</div>
-
   <script>
     const panes = document.querySelectorAll('.pane');
     const total = panes.length;
@@ -660,28 +561,21 @@
     const nextBtn = document.getElementById('nextBtn');
     const body = document.body;
     const markHome = document.getElementById('markHome');
-
     let current = 0;
     let inTransition = false;
-
     function goTo(index) {
       if (index < 0 || index >= total || index === current || inTransition) return;
       inTransition = true;
-
       panes.forEach((pane, i) => {
         pane.classList.toggle('active', i === index);
       });
-
       current = index;
       body.setAttribute('data-pane', current);
-
       // Update arrow disabled state
       prevBtn.disabled = current === 0;
       nextBtn.disabled = current === total - 1;
-
       setTimeout(() => { inTransition = false; }, 800);
     }
-
     // Arrow keys
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
@@ -696,24 +590,19 @@
         goTo(total - 1);
       }
     });
-
     // Click handlers
     nextBtn.addEventListener('click', () => goTo(current + 1));
     prevBtn.addEventListener('click', () => goTo(current - 1));
-
     markHome.addEventListener('click', (e) => {
       e.preventDefault();
       goTo(0);
     });
-
     // Touch / swipe
     let touchStartX = 0;
-
     document.addEventListener('touchstart', (e) => {
       if (window.innerWidth <= 900) return;
       touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
-
     document.addEventListener('touchend', (e) => {
       if (window.innerWidth <= 900) return;
       const touchEndX = e.changedTouches[0].screenX;
@@ -724,6 +613,5 @@
       }
     }, { passive: true });
   </script>
-
 </body>
 </html>
