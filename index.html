@@ -4,7 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aether Systems Research</title>
-  <meta name="description" content="Aether Systems Research develops participant-controlled architectures for behavioral health, human–machine teaming, and human–AI alignment in isolated and high-stakes environments." />
+  <meta name="description" content="Aether Systems Research builds behavioral architecture for isolated, confined, and high-stakes crews — modeling each person against their own history, on their own hardware, under their own keys." />
+
+  <!-- ─── SOCIAL / LINK PREVIEW ──────────────────────────────── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Aether Systems Research" />
+  <meta property="og:url" content="https://aethersystems.io/" />
+  <meta property="og:title" content="Aether Systems Research" />
+  <meta property="og:description" content="Behavioral modeling that reads one person against their own history instead of a population norm. A decade-deep prior. Eighteen months live. Custody stays with the person." />
+  <meta property="og:image" content="https://aethersystems.io/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Aether Systems Research" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Aether Systems Research" />
+  <meta name="twitter:description" content="Behavioral modeling that reads one person against their own history instead of a population norm. A decade-deep prior. Eighteen months live. Custody stays with the person." />
+  <meta name="twitter:image" content="https://aethersystems.io/og.png" />
+  <link rel="canonical" href="https://aethersystems.io/" />
+
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F5EFE6'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='22' fill='%238B5A3C' text-anchor='middle'%3Eæ%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -119,7 +136,8 @@
       color: var(--rose-brown);
       border-bottom-color: var(--coral-sienna);
     }
-    body[data-pane="4"] .contact-pinned { opacity: 0.5; }
+    /* closing pane is now index 5 */
+    body[data-pane="5"] .contact-pinned { opacity: 0.5; }
     /* ─── ARROW NAVIGATION (no numbers) ──────────────────────────── */
     .nav-arrows {
       display: flex;
@@ -142,6 +160,10 @@
       border-color: var(--coral-sienna);
       color: var(--rose-brown);
       background: rgba(199, 122, 79, 0.06);
+    }
+    .nav-arrow:focus-visible {
+      outline: 2px solid var(--coral-sienna);
+      outline-offset: 2px;
     }
     .nav-arrow:disabled {
       opacity: 0.2;
@@ -190,7 +212,7 @@
       width: 100%;
       max-width: 72rem;
     }
-    /* ─── PANE 0: HERO (rebalanced for longer copy) ──────────────── */
+    /* ─── PANE 0: HERO ───────────────────────────────────────────── */
     .hero-lead {
       font-family: var(--serif);
       font-weight: 300;
@@ -237,7 +259,7 @@
       font-style: italic;
       color: var(--rose-brown);
     }
-    /* ─── PANE 1: WHAT AETHER IS ─────────────────────────────────── */
+    /* ─── PANE 1: THE PERSPECTIVE ────────────────────────────────── */
     .pane-label {
       font-family: var(--sans);
       font-size: 0.7rem;
@@ -284,7 +306,7 @@
     .what-body + .what-body {
       margin-top: 1.25rem;
     }
-    /* ─── PANE 2: RESEARCH LINES — CLEAN CROSS ─────────────────── */
+    /* ─── PANE 2: RESEARCH LINES ─────────────────────────────────── */
     .research-intro {
       font-family: var(--serif);
       font-weight: 300;
@@ -295,14 +317,13 @@
       margin-bottom: 3.5rem;
       max-width: 40rem;
     }
-    /* The grid uses a single container with consistent borders that meet at center */
     .research-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       max-width: 66rem;
       position: relative;
     }
-    /* Vertical center divider (full height) */
+    /* Vertical centre divider — spans the full grid height, correct as-is */
     .research-grid::before {
       content: "";
       position: absolute;
@@ -313,28 +334,24 @@
       background: var(--rule-soft);
       transform: translateX(-50%);
     }
-    /* Horizontal center divider (full width) */
-    .research-grid::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: var(--rule-soft);
-      transform: translateY(-50%);
-    }
+    /* NOTE: the old .research-grid::after rule is deliberately gone.
+       Rows are auto-height and the two rows are very unequal, so the true row
+       boundary is NOT at top:50% — that's what made the line look offset.
+       The horizontal rule is now drawn on the bottom edge of the top-row cells,
+       which stretch to the real row height and meet exactly in the middle. */
     .research-cell {
-      padding: 2rem;
       display: grid;
       gap: 0.4rem;
       align-content: start;
     }
-    /* Trim asymmetric padding so content sits cleanly inside the cross */
     .research-cell.tl { padding: 0 2.5rem 2rem 0; }
     .research-cell.tr { padding: 0 0 2rem 2.5rem; }
     .research-cell.bl { padding: 2rem 2.5rem 0 0; }
     .research-cell.br { padding: 2rem 0 0 2.5rem; }
+    .research-cell.tl,
+    .research-cell.tr {
+      border-bottom: 1px solid var(--rule-soft);
+    }
     .research-cell .name {
       font-family: var(--serif);
       font-weight: 400;
@@ -353,7 +370,76 @@
     .research-cell .def em {
       color: var(--rose-brown);
     }
-    /* ─── PANE 3: THE WORK NOW ───────────────────────────────────── */
+    /* ─── PANE 3: THE EVIDENCE ───────────────────────────────────── */
+    .evidence-lead {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 2.25rem;
+      max-width: 44rem;
+    }
+    .evidence-lead em {
+      font-style: italic;
+      color: var(--rose-brown);
+    }
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 62rem;
+      border-top: 1px solid var(--rule-soft);
+      border-bottom: 1px solid var(--rule-soft);
+    }
+    .stat { padding: 1.4rem 2rem 1.4rem 0; }
+    .stat + .stat {
+      padding-left: 2rem;
+      border-left: 1px solid var(--rule-soft);
+    }
+    .stat .figure {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.85rem;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--rose-brown);
+      margin-bottom: 0.45rem;
+    }
+    .stat .caption {
+      display: block;
+      font-family: var(--serif);
+      font-size: 0.9375rem;
+      line-height: 1.45;
+      color: var(--charcoal);
+    }
+    .findings {
+      margin-top: 2rem;
+      max-width: 47rem;
+    }
+    .findings p {
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--charcoal);
+    }
+    .findings p + p { margin-top: 0.8rem; }
+    .findings em {
+      font-style: italic;
+      color: var(--rose-brown);
+    }
+    .subject-note {
+      margin-top: 1.6rem;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      opacity: 0.5;
+    }
+    /* ─── PANE 4: THE WORK NOW ───────────────────────────────────── */
     .now-lead {
       font-family: var(--serif);
       font-weight: 300;
@@ -388,7 +474,7 @@
       color: var(--rose-brown);
       font-weight: 500;
     }
-    /* ─── PANE 4: CLOSING MARK ───────────────────────────────────── */
+    /* ─── PANE 5: CLOSING MARK ───────────────────────────────────── */
     .pane-closing {
       justify-content: center;
       align-items: center;
@@ -426,12 +512,12 @@
       color: var(--charcoal);
       opacity: 0;
       pointer-events: none;
-      animation: hint-fade 5s ease-in-out 1.5s 1 forwards;
+      animation: hint-fade 7s ease-in-out 1.5s 1 forwards;
       z-index: 40;
     }
     @keyframes hint-fade {
       0% { opacity: 0; }
-      25%, 75% { opacity: 0.35; }
+      18%, 82% { opacity: 0.35; }
       100% { opacity: 0; }
     }
     /* ─── RESPONSIVE: stack on tablet/mobile ─────────────────────── */
@@ -486,8 +572,7 @@
       .research-grid {
         grid-template-columns: 1fr;
       }
-      .research-grid::before,
-      .research-grid::after {
+      .research-grid::before {
         display: none;
       }
       .research-cell.tl,
@@ -498,6 +583,15 @@
         border-bottom: 1px solid var(--rule-soft);
       }
       .research-cell.br { border-bottom: none; }
+      .stat-row {
+        grid-template-columns: 1fr;
+      }
+      .stat { padding: 1.25rem 0; }
+      .stat + .stat {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid var(--rule-soft);
+      }
       .now-body,
       .now-ask {
         max-width: 40rem;
@@ -505,16 +599,18 @@
       .closing-mark { font-size: 6rem; }
       .keyboard-hint { display: none; }
     }
-    @media (max-height: 800px) and (min-width: 901px) {
+    /* Short-window compaction — widened from 800px, which left an unguarded band */
+    @media (max-height: 900px) and (min-width: 901px) {
       .pane {
         padding: 7rem 6rem;
       }
       .pane-label {
         margin-bottom: 1.5rem;
       }
-      .research-intro {
+      .research-intro,
+      .evidence-lead {
         font-size: clamp(1.5rem, 3vw, 2.25rem);
-        margin-bottom: 2rem;
+        margin-bottom: 1.75rem;
       }
       .research-cell .name {
         font-size: 1.3rem;
@@ -527,6 +623,13 @@
       .research-cell.tr { padding: 0 0 1.5rem 2rem; }
       .research-cell.bl { padding: 1.5rem 2rem 0 0; }
       .research-cell.br { padding: 1.5rem 0 0 2rem; }
+      .stat { padding: 1.1rem 1.75rem 1.1rem 0; }
+      .stat + .stat { padding-left: 1.75rem; }
+      .stat .figure { font-size: 1.55rem; }
+      .stat .caption { font-size: 0.875rem; line-height: 1.4; }
+      .findings { margin-top: 1.5rem; }
+      .findings p { font-size: 0.9375rem; line-height: 1.5; }
+      .subject-note { margin-top: 1.2rem; }
       .now-body {
         margin-top: 1.5rem;
       }
@@ -555,18 +658,18 @@
     <section class="pane active" data-index="0">
       <div class="pane-inner">
         <h1 class="hero-lead">
-          <span class="opening">Aether Systems Research is an independent research firm developing architectures at the intersection of behavioral health, human–machine teaming, and human–AI alignment.</span>
-          <span class="pivot">Aether aids the operator and their mission.</span>
+          <span class="opening">Crews in isolated, high-stakes environments are assessed against population norms — an average of people who are not on the ship.</span>
+          <span class="pivot">Aether builds the other instrument. It reads the person’s own baseline — and it has already been run.</span>
         </h1>
         <p class="hero-body">
-          Led by founder and Principal Investigator Sherry Moore, the work is designed for isolated, confined, and high-stakes environments — from long-duration spaceflight and its analogs to offshore and industrial crews.
+          Sherry Moore, founder and Principal Investigator, works where behavioral health, human–machine teaming, and human–AI alignment meet: long-duration spaceflight and its analogs, and the offshore and industrial crews that face the same problem with a smaller denominator.
         </p>
       </div>
     </section>
-    <!-- Pane 1: What Aether Is -->
+    <!-- Pane 1: The Perspective -->
     <section class="pane" data-index="1">
       <div class="pane-inner">
-        <div class="pane-label">§ 02 — The Perspective</div>
+        <div class="pane-label">§ 02 — The perspective</div>
         <h2 class="what-lead">
           An artist’s attention to <em>a technical problem.</em>
         </h2>
@@ -581,34 +684,63 @@
     <!-- Pane 2: Research Lines -->
     <section class="pane" data-index="2">
       <div class="pane-inner">
-        <div class="pane-label">§ 03 — The work in progress</div>
+        <div class="pane-label">§ 03 — The research</div>
         <p class="research-intro">
           Four lines of research. One architecture.
         </p>
         <div class="research-grid">
           <div class="research-cell tl">
             <span class="name">Conscience Architecture</span>
-            <span class="def">A framework for N-of-1 behavioral modeling built on edge sovereignty.</span>
+            <span class="def">Models one person against their own history rather than a population norm — locally, on their hardware, under their keys. The framework the other three run on.</span>
           </div>
           <div class="research-cell tr">
-            <span class="name">Persistent Operational Twin System</span>
-            <span class="def"><em>Mission Chemistry.</em> A software-payload concept for long-duration spaceflight. U.S. provisional patent application filed · Speaker, ESA Space for Inspiration 2026.</span>
+            <span class="name">Relational Twin</span>
+            <span class="def"><em>Mission Chemistry.</em> Carries the framework into long-duration spaceflight as a software payload — no added mass, on-device inference, no ground tether. U.S. provisional patent application filed · Speaker, ESA Space for Inspiration 2026.</span>
           </div>
           <div class="research-cell bl">
             <span class="name">Relational Signal Science</span>
-            <span class="def">A proposed field of study treating emergent behavioral structure between a person and an adaptive system as a measurable scientific object. Its lineage draws from enactivism, second-order cybernetics, and dyadic developmental psychology — the coupling as the unit of study.</span>
+            <span class="def">Proposes a different unit of study: not the person, not the system, but the coupling between them — and treats the structure that emerges there as measurable. Draws on enactivism, second-order cybernetics, and dyadic developmental psychology.</span>
           </div>
           <div class="research-cell br">
             <span class="name">Project Sanctuary</span>
-            <span class="def">A concept architecture reimagining offshore and other isolated worksites as regenerative environments: operator-owned behavioral-health support, biophilic habitat, and on-site regenerative energy in one system — the terrestrial analog to long-duration spaceflight.</span>
+            <span class="def">Takes the same instrument to Earth as the Persistent Operational Twin System, and redesigns the isolated worksite around the crew rather than the asset: operator-owned behavioral support, biophilic habitat, and on-site clean energy in one system.</span>
           </div>
         </div>
       </div>
     </section>
-    <!-- Pane 3: The Work Now -->
+    <!-- Pane 3: The Evidence -->
     <section class="pane" data-index="3">
       <div class="pane-inner">
-        <div class="pane-label">§ 04 — The work now</div>
+        <div class="pane-label">§ 04 — The evidence</div>
+        <p class="evidence-lead">
+          The instrument has already been run. <em>Ten years of baseline; eighteen months of signal.</em>
+        </p>
+        <div class="stat-row">
+          <div class="stat">
+            <span class="figure">356,330</span>
+            <span class="caption">Passive behavioral events, 2016–2026. Accumulated before anything was being tested — the prior.</span>
+          </div>
+          <div class="stat">
+            <span class="figure">18 months</span>
+            <span class="caption">Two channels running concurrently, October 2024 – March 2026 — the signal.</span>
+          </div>
+          <div class="stat">
+            <span class="figure">774</span>
+            <span class="caption">Self-timestamped writing days inside the live window.</span>
+          </div>
+        </div>
+        <div class="findings">
+          <p><em>The baseline is not stationary.</em> Within one device and one behavior, skip rate fell from 74% to 45% to under 8% across three consecutive months — a regime change localized to a month, not a slope.</p>
+          <p><em>The two channels agree at minute resolution.</em> Listening covers 95% of the minutes inside writing windows, against 76% across the same days. p = 1.8 × 10⁻⁴.</p>
+          <p><em>And two hypotheses failed.</em> Day-level coupling: null. Intraday convergence: null. Both are reported — a baseline you cannot falsify is not a baseline.</p>
+        </div>
+        <p class="subject-note">The subject is the principal investigator.</p>
+      </div>
+    </section>
+    <!-- Pane 4: The Work Now -->
+    <section class="pane" data-index="4">
+      <div class="pane-inner">
+        <div class="pane-label">§ 05 — The work now</div>
         <h2 class="now-lead">
           <em>Mission Chemistry</em> asks what behavioral signals mean — not merely whom they belong to.
         </h2>
@@ -616,12 +748,12 @@
           Identity-resolution systems can connect fragmented observations to a person. Mission Chemistry studies what changing signals mean for that particular person and crew — and keeps the interpretation under participant control.
         </p>
         <p class="now-ask">
-          <strong>Aether is seeking one funded analog-mission partner.</strong> The partner provides mission access and study funding; Aether provides the instrument, protocol, deployment, and analysis.
+          <strong>Aether is not asking to use a crew. It is offering to de-risk one.</strong> You bring the crew, the confinement, and the study funding. Aether brings the instrument, the protocol, the deployment, and the analysis — and your crew keep custody of their own baselines. The prior is a decade deep and the instrument has already run live, so the pilot validates rather than invents.
         </p>
       </div>
     </section>
-    <!-- Pane 4: Closing Mark -->
-    <section class="pane pane-closing" data-index="4">
+    <!-- Pane 5: Closing Mark -->
+    <section class="pane pane-closing" data-index="5">
       <div class="closing-mark">æ</div>
     </section>
   </div>
