@@ -47,6 +47,15 @@
       height: 100%;
       overflow: hidden;
     }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 80;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
     body {
       font-family: var(--serif);
       font-weight: 400;
@@ -83,7 +92,21 @@
       font-feature-settings: "dlig" 1, "liga" 1;
       text-decoration: none;
       cursor: pointer;
+      position: relative;
+      display: inline-block;
       transition: opacity 0.4s ease;
+      animation: mark-live 2.4s ease-in-out infinite;
+    }
+    .chrome-mark::after {
+      content: '';
+      position: absolute;
+      top: 0.15em;
+      right: -0.55em;
+      width: 0.38rem;
+      height: 0.38rem;
+      border-radius: 50%;
+      background: var(--coral-sienna);
+      animation: live-beat 2.2s ease-in-out infinite;
     }
     .chrome-mark:hover { opacity: 0.7; }
     .chrome-meta {
@@ -94,6 +117,14 @@
       text-transform: uppercase;
       color: var(--charcoal);
       opacity: 0.55;
+    }
+    @keyframes mark-live {
+      0%, 100% { opacity: 0.82; }
+      50% { opacity: 1; }
+    }
+    @keyframes live-beat {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1); }
     }
     .chrome-bottom {
       position: fixed;
@@ -137,7 +168,7 @@
       border-bottom-color: var(--coral-sienna);
     }
     /* closing pane is now index 5 */
-    body[data-pane="5"] .contact-pinned { opacity: 0.5; }
+    body[data-pane="6"] .contact-pinned { opacity: 0.5; }
     /* ─── ARROW NAVIGATION (no numbers) ──────────────────────────── */
     .nav-arrows {
       display: flex;
@@ -207,6 +238,13 @@
       opacity: 1;
       pointer-events: auto;
       visibility: visible;
+    }
+    .pane.active .pane-inner {
+      animation: rise-in 900ms var(--ease) both;
+    }
+    @keyframes rise-in {
+      from { opacity: 0.35; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .pane-inner {
       width: 100%;
@@ -474,6 +512,28 @@
       color: var(--rose-brown);
       font-weight: 500;
     }
+    .need-list {
+      margin-top: 1.25rem;
+      max-width: 44rem;
+      padding: 0;
+      list-style: none;
+    }
+    .need-list li {
+      font-size: 1.02rem;
+      line-height: 1.45;
+      color: var(--charcoal);
+      padding: 0.35rem 0 0.35rem 1.1rem;
+      position: relative;
+    }
+    .need-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 0.45rem;
+      height: 1px;
+      background: var(--coral-sienna);
+    }
     /* ─── PANE 5: CLOSING MARK ───────────────────────────────────── */
     .pane-closing {
       justify-content: center;
@@ -649,7 +709,7 @@
 <body data-pane="0">
   <!-- ─── TOP CHROME ──────────────────────────────────────── -->
   <div class="chrome-top">
-    <a href="#" class="chrome-mark" id="markHome" aria-label="Return to start">æ</a>
+    <a href="#" class="chrome-mark" id="markHome" aria-label="Aether — live. Return to start">æ</a>
     <span class="chrome-meta">Aether Systems Research</span>
   </div>
   <!-- ─── PANES ──────────────────────────────────────────── -->
@@ -662,22 +722,23 @@
           <span class="pivot">What happens when a system learns a person—and the person learns the system back?</span>
         </h1>
         <p class="hero-body">
-          Aether Systems Research develops behavioral architectures for people working in complex, isolated, and adaptive environments. We begin with the individual: their history, patterns, context, and changing baseline.
+          Behavioral architectures for people working in complex, isolated, and adaptive environments. We begin with the individual: history, patterns, context, and a changing baseline.
         </p>
       </div>
     </section>
     <!-- Pane 1: The Perspective -->
     <section class="pane" data-index="1">
       <div class="pane-inner">
-        <div class="pane-label">§ 02 — The perspective</div>
+        <div class="pane-label">§ 02 — Why it matters</div>
         <h2 class="what-lead">
-          That relationship can be measured.
+          Most systems recognize patterns across populations.<br>
+          <em>Aether pays closer attention to the individual.</em>
         </h2>
         <p class="what-body">
-          Modeled. Designed for rooms where ordinary support is not enough.
+          A person is not only a collection of behaviors. They exist within relationships, environments, routines, tools, and systems that change over time.
         </p>
         <p class="what-body">
-          A person is not only a collection of behaviors. They exist within relationships, environments, routines, tools, communities, and systems that change over time. As adaptive technology becomes embedded in those environments, the distinction between human behavior and system behavior becomes less straightforward. <em>Aether studies that space.</em>
+          As adaptive technology becomes embedded in those environments, the distinction between human behavior and system behavior gets less straightforward. <em>Aether studies that space.</em>
         </p>
       </div>
     </section>
@@ -691,19 +752,19 @@
         <div class="research-grid">
           <div class="research-cell tl">
             <span class="name">Conscience Architecture</span>
-            <span class="def">A framework for N-of-1 behavioral modeling built around individual baselines, longitudinal signal, and edge sovereignty. What becomes possible when a system learns one person—and keeps that model under their control.</span>
+            <span class="def">N-of-1 modeling on individual baselines, longitudinal signal, and edge sovereignty. What becomes possible when a system learns one person — and keeps that model under their control.</span>
           </div>
           <div class="research-cell tr">
             <span class="name">Persistent Operational Twin</span>
-            <span class="def"><em>Mission Chemistry.</em> A software-payload concept for long-duration spaceflight, in development. ESA Space for Inspiration 2026.</span>
+            <span class="def"><em>Mission Chemistry.</em> A software payload for long-duration spaceflight, where delay and isolation change what support can look like. ESA Space for Inspiration 2026.</span>
           </div>
           <div class="research-cell bl">
             <span class="name">Relational Signal Science</span>
-            <span class="def">A proposed field: the coupling itself may be a measurable scientific object. Lineage in enactivism, second-order cybernetics, and dyadic developmental psychology.</span>
+            <span class="def">A proposed field. The coupling itself may be a measurable scientific object — enactivism, second-order cybernetics, dyadic developmental psychology.</span>
           </div>
           <div class="research-cell br">
             <span class="name">Project Sanctuary</span>
-            <span class="def">A terrestrial precursor. Isolated worksites as regenerative environments: operator-owned behavioral support, biophilic habitat, on-site regenerative energy, human-centered design.</span>
+            <span class="def">A terrestrial precursor to long-duration habitation. Isolated worksites as regenerative environments — not places people merely endure.</span>
           </div>
         </div>
       </div>
@@ -738,20 +799,42 @@
     <!-- Pane 4: From Earth to Orbit -->
     <section class="pane" data-index="4">
       <div class="pane-inner">
-        <div class="pane-label">§ 05 — Live</div>
+        <div class="pane-label">§ 05 — From Earth to orbit</div>
         <h2 class="now-lead">
-          The instrument is running.
+          Build it here. Learn from it here.<br>
+          <em>Take the knowledge farther.</em>
         </h2>
         <p class="now-body">
-          Not a closed study. Not a slide. A practice still taking signal — in rooms on Earth, aimed at the ones farther out.
+          An isolated worksite, a polar station, a spacecraft, a lunar habitat — same problem, different distance from home. Understand the person. The relationship. The environment. Then design around what we learn.
         </p>
-        <p class="now-ask">
-          <strong>Aether is not asking to use a crew. It is offering to de-risk one.</strong> Custody stays with the person. The pilot would validate work already in motion.
+        <p class="now-body" style="margin-top:1.25rem">
+          Some questions belong to behavioral science. Some to AI, spaceflight, habitat, education, energy. Others may need a field that does not fully exist yet. <em>We’re interested in what that field needs to become.</em>
         </p>
       </div>
     </section>
-    <!-- Pane 5: Closing Mark -->
-    <section class="pane pane-closing" data-index="5">
+    <!-- Pane 5: Pilot -->
+    <section class="pane" data-index="5">
+      <div class="pane-inner">
+        <div class="pane-label">§ 06 — Pilot</div>
+        <h2 class="now-lead">
+          Pilot the first Sanctuary.
+        </h2>
+        <p class="now-body">
+          Tested on Earth before it is needed in space. A real isolated or high-demand worksite. A small operator population. A limited intervention we can measure before, during, and after.
+        </p>
+        <ul class="need-list">
+          <li>Operator-owned behavioral support</li>
+          <li>Longitudinal, individual-centered signal</li>
+          <li>Biophilic habitat and on-site regenerative energy</li>
+          <li>How those systems interact over time — what works, what fails</li>
+        </ul>
+        <p class="now-ask">
+          A pilot does not need to be a perfect lunar analog. It needs to be real enough to teach us something. If you operate a worksite, build resilient infrastructure, or study human performance in hard rooms: <strong>let’s build a small version and see what it teaches us.</strong>
+        </p>
+      </div>
+    </section>
+    <!-- Pane 6: Closing Mark -->
+    <section class="pane pane-closing" data-index="6">
       <div class="closing-mark">æ</div>
     </section>
   </div>
