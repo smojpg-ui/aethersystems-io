@@ -4,21 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aether Systems Research</title>
-  <meta name="description" content="We study the signal between people and the systems around them. Behavioral architectures for complex, isolated, and adaptive environments." />
+  <meta name="description" content="Aether Systems Research builds behavioral architecture for isolated, confined, and high-stakes crews — modeling each person against their own history, on their own hardware, under their own keys." />
 
   <!-- ─── SOCIAL / LINK PREVIEW ──────────────────────────────── -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Aether Systems Research" />
   <meta property="og:url" content="https://aethersystems.io/" />
   <meta property="og:title" content="Aether Systems Research" />
-  <meta property="og:description" content="What happens when a system learns a person—and the person learns the system back?" />
+  <meta property="og:description" content="Behavioral modeling that reads one person against their own history instead of a population norm. A decade-deep prior. Eighteen months live. Custody stays with the person." />
   <meta property="og:image" content="https://aethersystems.io/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Aether Systems Research" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Aether Systems Research" />
-  <meta name="twitter:description" content="What happens when a system learns a person—and the person learns the system back?" />
+  <meta name="twitter:description" content="Behavioral modeling that reads one person against their own history instead of a population norm. A decade-deep prior. Eighteen months live. Custody stays with the person." />
   <meta name="twitter:image" content="https://aethersystems.io/og.png" />
   <link rel="canonical" href="https://aethersystems.io/" />
 
@@ -46,15 +46,6 @@
       background: var(--paper);
       height: 100%;
       overflow: hidden;
-    }
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 80;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
     }
     body {
       font-family: var(--serif);
@@ -92,21 +83,7 @@
       font-feature-settings: "dlig" 1, "liga" 1;
       text-decoration: none;
       cursor: pointer;
-      position: relative;
-      display: inline-block;
       transition: opacity 0.4s ease;
-      animation: mark-live 2.4s ease-in-out infinite;
-    }
-    .chrome-mark::after {
-      content: '';
-      position: absolute;
-      top: 0.15em;
-      right: -0.55em;
-      width: 0.38rem;
-      height: 0.38rem;
-      border-radius: 50%;
-      background: var(--coral-sienna);
-      animation: live-beat 2.2s ease-in-out infinite;
     }
     .chrome-mark:hover { opacity: 0.7; }
     .chrome-meta {
@@ -117,14 +94,6 @@
       text-transform: uppercase;
       color: var(--charcoal);
       opacity: 0.55;
-    }
-    @keyframes mark-live {
-      0%, 100% { opacity: 0.82; }
-      50% { opacity: 1; }
-    }
-    @keyframes live-beat {
-      0%, 100% { opacity: 0.3; transform: scale(0.8); }
-      50% { opacity: 1; transform: scale(1); }
     }
     .chrome-bottom {
       position: fixed;
@@ -168,7 +137,7 @@
       border-bottom-color: var(--coral-sienna);
     }
     /* closing pane is now index 5 */
-    body[data-pane="6"] .contact-pinned { opacity: 0.5; }
+    body[data-pane="5"] .contact-pinned { opacity: 0.5; }
     /* ─── ARROW NAVIGATION (no numbers) ──────────────────────────── */
     .nav-arrows {
       display: flex;
@@ -205,9 +174,6 @@
       height: 0.95rem;
     }
     /* Subtle pulse on the next button when on the hero, to invite navigation */
-    body[data-pane="0"] #nextBtn {
-      animation: gentle-pulse 2.4s ease-in-out 1.8s infinite;
-    }
     @keyframes gentle-pulse {
       0%, 100% { border-color: var(--rule); }
       50% { border-color: var(--coral-sienna); }
@@ -238,13 +204,6 @@
       opacity: 1;
       pointer-events: auto;
       visibility: visible;
-    }
-    .pane.active .pane-inner {
-      animation: rise-in 900ms var(--ease) both;
-    }
-    @keyframes rise-in {
-      from { opacity: 0.35; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     .pane-inner {
       width: 100%;
@@ -512,28 +471,6 @@
       color: var(--rose-brown);
       font-weight: 500;
     }
-    .need-list {
-      margin-top: 1.25rem;
-      max-width: 44rem;
-      padding: 0;
-      list-style: none;
-    }
-    .need-list li {
-      font-size: 1.02rem;
-      line-height: 1.45;
-      color: var(--charcoal);
-      padding: 0.35rem 0 0.35rem 1.1rem;
-      position: relative;
-    }
-    .need-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.85em;
-      width: 0.45rem;
-      height: 1px;
-      background: var(--coral-sienna);
-    }
     /* ─── PANE 5: CLOSING MARK ───────────────────────────────────── */
     .pane-closing {
       justify-content: center;
@@ -704,12 +641,33 @@
       }
       .closing-mark { animation: none; }
     }
+    /* ─── SHORT-WINDOW GUARD (added 2026-09-22) ──────────────────────
+       The bottom chrome is pinned (position:fixed, ~6rem tall incl. its 2.5rem offset)
+       and each pane centers its content vertically. On a short window (laptop with
+       browser chrome, zoomed-in, split screen) the hero was taller than the space
+       between the two chromes, so it overflowed evenly — top into the mark, bottom
+       into the contact block. Two fixes: reserve the chrome bands as padding so the
+       centering box excludes them, and let the hero type breathe with height. ─── */
+    .pane {
+      padding-top: max(7rem, 12vh);
+      padding-bottom: max(8rem, 14vh);
+    }
+    .hero-lead { font-size: clamp(1.4rem, min(3.5vw, 5vh), 3rem); }
+    .hero-lead .pivot { margin-top: clamp(0.9rem, 2.4vh, 1.75rem); }
+    .hero-body { margin-top: clamp(1.1rem, 3vh, 2.5rem); font-size: clamp(0.9rem, 1.8vh, 1.0625rem); line-height: 1.55; }
+    @media (max-height: 500px) and (min-width: 901px) {
+      .hero-body { display: none; }   /* on a very short window the lead + pivot carry the page; the body returns on the next pane */
+    }
+    /* every pane: if the content is still taller than the band between the chromes, scroll it inside the band instead of overlapping */
+    .pane-inner { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+    .pane-inner::-webkit-scrollbar { display: none; }
+
   </style>
 </head>
 <body data-pane="0">
   <!-- ─── TOP CHROME ──────────────────────────────────────── -->
   <div class="chrome-top">
-    <a href="#" class="chrome-mark" id="markHome" aria-label="Aether — live. Return to start">æ</a>
+    <a href="#" class="chrome-mark" id="markHome" aria-label="Return to start">æ</a>
     <span class="chrome-meta">Aether Systems Research</span>
   </div>
   <!-- ─── PANES ──────────────────────────────────────────── -->
@@ -718,27 +676,26 @@
     <section class="pane active" data-index="0">
       <div class="pane-inner">
         <h1 class="hero-lead">
-          <span class="opening">We study the signal between people and the systems around them.</span>
-          <span class="pivot">What happens when a system learns a person—and the person learns the system back?</span>
+          <span class="opening">Crews in isolated, high-stakes environments are assessed against population norms — an average of people who are not on the ship.</span>
+          <span class="pivot">Aether builds the other instrument. It reads the person’s own baseline — and it has already been run.</span>
         </h1>
         <p class="hero-body">
-          Behavioral architectures for people working in complex, isolated, and adaptive environments. We begin with the individual: history, patterns, context, and a changing baseline.
+          Sherry Moore, founder and Principal Investigator, works where behavioral health, human–machine teaming, and human–AI alignment meet: long-duration spaceflight, its analogs, and the offshore and industrial crews facing the same problem with a smaller denominator.
         </p>
       </div>
     </section>
     <!-- Pane 1: The Perspective -->
     <section class="pane" data-index="1">
       <div class="pane-inner">
-        <div class="pane-label">§ 02 — Why it matters</div>
+        <div class="pane-label">§ 02 — The perspective</div>
         <h2 class="what-lead">
-          Most systems recognize patterns across populations.<br>
-          <em>Aether pays closer attention to the individual.</em>
+          An artist’s attention to <em>a technical problem.</em>
         </h2>
         <p class="what-body">
-          A person is not only a collection of behaviors. They exist within relationships, environments, routines, tools, and systems that change over time.
+          A decade of creative and commercial practice brings a perceptual discipline to a domain usually left to engineers: the measurable signal between a person and the adaptive systems they work alongside.
         </p>
         <p class="what-body">
-          As adaptive technology becomes embedded in those environments, the distinction between human behavior and system behavior gets less straightforward. <em>Aether studies that space.</em>
+          The industry builds systems to extract, predict, and manage. Aether begins at the other end: <em>the person stays the subject and custodian of their own model.</em> Interpretation is co-calibrated, permission is ongoing, and the architecture starts from how a person actually engages.
         </p>
       </div>
     </section>
@@ -747,105 +704,82 @@
       <div class="pane-inner">
         <div class="pane-label">§ 03 — The research</div>
         <p class="research-intro">
-          Four lines. One question.
+          Four lines of research. One architecture.
         </p>
         <div class="research-grid">
           <div class="research-cell tl">
             <span class="name">Conscience Architecture</span>
-            <span class="def">N-of-1 modeling on individual baselines, longitudinal signal, and edge sovereignty. What becomes possible when a system learns one person — and keeps that model under their control.</span>
+            <span class="def">Models one person against their own history rather than a population norm — locally, on their hardware, under their keys. The framework the other three run on.</span>
           </div>
           <div class="research-cell tr">
-            <span class="name">Persistent Operational Twin</span>
-            <span class="def"><em>Mission Chemistry.</em> A software payload for long-duration spaceflight, where delay and isolation change what support can look like. ESA Space for Inspiration 2026.</span>
+            <span class="name">Relational Twin</span>
+            <span class="def"><em>Mission Chemistry.</em> Carries the framework into long-duration spaceflight as a software payload — no added mass, on-device inference, no ground tether. U.S. provisional patent application filed · Speaker, ESA Space for Inspiration 2026.</span>
           </div>
           <div class="research-cell bl">
             <span class="name">Relational Signal Science</span>
-            <span class="def">A proposed field. The coupling itself may be a measurable scientific object — enactivism, second-order cybernetics, dyadic developmental psychology.</span>
+            <span class="def">A different unit of study: not the person, not the system, but the coupling between them — treated as measurable. Draws on enactivism, second-order cybernetics, and dyadic developmental psychology.</span>
           </div>
           <div class="research-cell br">
             <span class="name">Project Sanctuary</span>
-            <span class="def">A terrestrial precursor to long-duration habitation. Isolated worksites as regenerative environments — not places people merely endure.</span>
+            <span class="def">The same instrument, brought to Earth as the Persistent Operational Twin System. The isolated worksite redesigned around the crew, not the asset: operator-owned behavioral support, biophilic habitat, and on-site clean energy in one system.</span>
           </div>
         </div>
       </div>
     </section>
-    <!-- Pane 3: The Experiment -->
+    <!-- Pane 3: The Evidence -->
     <section class="pane" data-index="3">
       <div class="pane-inner">
-        <div class="pane-label">§ 04 — The experiment</div>
+        <div class="pane-label">§ 04 — The evidence</div>
         <p class="evidence-lead">
-          The instrument is still running. <em>A baseline that cannot change—and cannot be wrong—is not a baseline.</em>
+          The instrument has already been run. <em>Ten years of baseline; eighteen months of signal.</em>
         </p>
         <div class="stat-row">
           <div class="stat">
-            <span class="figure">N-of-1</span>
-            <span class="caption">Longitudinal behavior, multimodal signal. Traces left connected across time, context, and modality.</span>
+            <span class="figure">356,330</span>
+            <span class="caption">Passive behavioral events, 2016–2026. Accumulated before anything was being tested — the prior.</span>
           </div>
           <div class="stat">
-            <span class="figure">Still open</span>
-            <span class="caption">Live since October 2024. Eighteen months in — and still accumulating.</span>
+            <span class="figure">18 months</span>
+            <span class="caption">Two channels running concurrently, October 2024 – March 2026 — the signal.</span>
           </div>
           <div class="stat">
-            <span class="figure">Some nulls</span>
-            <span class="caption">Intentionally falsifiable. Some hypotheses have already failed. That is the work.</span>
+            <span class="figure">774</span>
+            <span class="caption">Self-timestamped writing days inside the live window.</span>
           </div>
         </div>
         <div class="findings">
-          <p>The corpus is not a closed study. It is a practice still accumulating — and still allowed to be wrong.</p>
-          <p><em>The subject is the principal investigator.</em></p>
+          <p><em>The baseline is not stationary.</em> On one device, one behavior, skip rate fell from 74% to 45% to under 8% in three consecutive months — a regime change, not a slope.</p>
+          <p><em>The two channels agree at minute resolution.</em> Listening covers 95% of the minutes inside writing windows, against 76% across the same days. p = 1.8 × 10⁻⁴.</p>
+          <p><em>And two hypotheses failed.</em> Day-level coupling: null. Intraday convergence: null. Both are reported — a baseline you cannot falsify is not a baseline.</p>
         </div>
+        <p class="subject-note">The subject is the principal investigator.</p>
       </div>
     </section>
-    <!-- Pane 4: From Earth to Orbit -->
+    <!-- Pane 4: The Work Now -->
     <section class="pane" data-index="4">
       <div class="pane-inner">
-        <div class="pane-label">§ 05 — From Earth to orbit</div>
+        <div class="pane-label">§ 05 — The work now</div>
         <h2 class="now-lead">
-          Build it here. Learn from it here.<br>
-          <em>Take the knowledge farther.</em>
+          <em>Mission Chemistry</em> asks what behavioral signals mean — not merely whom they belong to.
         </h2>
         <p class="now-body">
-          An isolated worksite, a polar station, a spacecraft, a lunar habitat — same problem, different distance from home. Understand the person. The relationship. The environment. Then design around what we learn.
+          Identity-resolution systems connect fragmented observations to a person. Mission Chemistry asks what changing signals mean for that person and crew — and keeps the interpretation under participant control.
         </p>
-        <p class="now-body" style="margin-top:1.25rem">
-          Some questions belong to behavioral science. Some to AI, spaceflight, habitat, education, energy. Others may need a field that does not fully exist yet. <em>We’re interested in what that field needs to become.</em>
-        </p>
-      </div>
-    </section>
-    <!-- Pane 5: Pilot -->
-    <section class="pane" data-index="5">
-      <div class="pane-inner">
-        <div class="pane-label">§ 06 — Pilot</div>
-        <h2 class="now-lead">
-          Pilot the first Sanctuary.
-        </h2>
-        <p class="now-body">
-          Tested on Earth before it is needed in space. A real isolated or high-demand worksite. A small operator population. A limited intervention we can measure before, during, and after.
-        </p>
-        <ul class="need-list">
-          <li>Operator-owned behavioral support</li>
-          <li>Longitudinal, individual-centered signal</li>
-          <li>Biophilic habitat and on-site regenerative energy</li>
-          <li>How those systems interact over time — what works, what fails</li>
-        </ul>
         <p class="now-ask">
-          A pilot does not need to be a perfect lunar analog. It needs to be real enough to teach us something. If you operate a worksite, build resilient infrastructure, or study human performance in hard rooms: <strong>let’s build a small version and see what it teaches us.</strong>
+          <strong>Aether is not asking to use a crew. It is offering to de-risk one.</strong> You bring the crew, the confinement, and the study funding. Aether brings the instrument, protocol, deployment, and analysis — and your crew keep custody of their own baselines. The prior is a decade deep and the instrument has already run live: the pilot validates rather than invents.
         </p>
       </div>
     </section>
-    <!-- Pane 6: Closing Mark -->
-    <section class="pane pane-closing" data-index="6">
+    <!-- Pane 5: Closing Mark -->
+    <section class="pane pane-closing" data-index="5">
       <div class="closing-mark">æ</div>
     </section>
   </div>
-  
   <!-- ─── BOTTOM CHROME (pinned contact + arrow nav) ───────── -->
   <div class="chrome-bottom">
     <div class="contact-pinned">
       <span class="label">For correspondence</span>
       <a href="mailto:sherrymoore@aethersystems.io">sherrymoore@aethersystems.io</a>
-      <span class="label" style="margin-top:0.85rem">On the record</span>
-      <a href="https://github.com/smojpg-ui" target="_blank" rel="noopener">github.com/smojpg-ui</a>
     </div>
     <div class="nav-arrows">
       <button class="nav-arrow" id="prevBtn" disabled aria-label="Previous">
