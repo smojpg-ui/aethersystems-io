@@ -495,19 +495,18 @@
       display: block;
       max-width: 40rem;
     }
+    /* the question on the left, the answer sent to the right, the body centered beneath */
     .question-lead .pivot {
       display: block;
       font-weight: 400;
       color: var(--rose-brown);
       margin-top: 1.5rem;
-      padding-left: 13rem;
-      position: relative;
-      max-width: 60rem;
+      text-align: right;
     }
     .question-body {
       max-width: 36rem;
-      margin-top: 3rem;
-      margin-left: 13rem;
+      margin: 3rem auto 0;
+      text-align: center;
       font-size: 1.1875rem;
       line-height: 1.65;
       color: var(--charcoal);
@@ -600,11 +599,7 @@
         border-bottom: 1px solid var(--rule-soft);
       }
       .pane:last-of-type { border-bottom: none; }
-      .question-lead .pivot {
-        padding-left: 1.5rem;
-      }
       .question-body {
-        margin-left: 0;
         margin-top: 2rem;
       }
       .research-grid {
