@@ -461,6 +461,35 @@
       color: var(--rose-brown);
       font-weight: 500;
     }
+    /* the pilot ask carries its own correspondence line, so the pinned one steps aside on this pane */
+    .now-contact {
+      margin-top: 2.25rem;
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+    .now-contact .label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--coral-sienna);
+    }
+    .now-contact a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--coral-sienna);
+      padding-bottom: 2px;
+      transition: color 0.4s ease;
+    }
+    .now-contact a:hover,
+    .now-contact a:focus { color: var(--rose-brown); }
+    @media (min-width: 901px) {
+      body[data-pane="2"] .contact-pinned { opacity: 0; pointer-events: none; }
+    }
     /* ─── THE QUESTION (the May hero, now the closer) ────────────── */
     .question-lead {
       font-family: var(--serif);
@@ -699,6 +728,9 @@
     .hero-lead,
     .question-lead { font-size: clamp(2.2rem, min(5.5vw, 8.5vh), 5rem); }
     .question-lead .pivot { margin-top: clamp(0.75rem, 2.4vh, 1.5rem); }
+    .now-lead { font-size: clamp(1.75rem, min(4.3vw, 7vh), 3.6rem); }
+    .now-body { margin-top: clamp(1rem, 3.5vh, 2.25rem); }
+    .now-contact { margin-top: clamp(1.25rem, 3.5vh, 2.25rem); }
     .hero-body,
     .question-body { margin-top: clamp(1.25rem, 4.5vh, 3rem); font-size: clamp(1rem, 2.1vh, 1.1875rem); line-height: 1.6; }
     /* every pane: if the content is still taller than the band between the chromes, scroll it inside the band instead of overlapping */
@@ -755,8 +787,15 @@
     <section class="pane" data-index="2">
       <div class="pane-inner">
         <div class="pane-label">§ 03 — The work now</div>
-        <p class="now-ask">
-          <strong>Aether is not asking to use a crew. It is offering to de-risk one.</strong> You bring the crew, the confinement, and the study funding. Aether brings the instrument, protocol, deployment, and analysis — and your crew keeps custody of their own baselines.
+        <h2 class="now-lead">
+          Aether is not asking to use a crew. <em>It is offering to de-risk one.</em>
+        </h2>
+        <p class="now-body">
+          You bring the crew, the confinement, and the study funding. Aether brings the instrument, protocol, deployment, and analysis — and your crew keeps custody of their own baselines.
+        </p>
+        <p class="now-contact">
+          <span class="label">For correspondence</span>
+          <a href="mailto:sherrymoore@aethersystems.io">sherrymoore@aethersystems.io</a>
         </p>
       </div>
     </section>
