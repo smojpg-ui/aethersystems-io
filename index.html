@@ -136,7 +136,7 @@
       color: var(--rose-brown);
       border-bottom-color: var(--coral-sienna);
     }
-    /* closing pane is now index 5 */
+    /* closing pane is now index 4 */
     body[data-pane="4"] .contact-pinned { opacity: 0.5; }
     /* ─── ARROW NAVIGATION (no numbers) ──────────────────────────── */
     .nav-arrows {
@@ -210,48 +210,28 @@
       max-width: 72rem;
     }
     /* ─── PANE 0: HERO ───────────────────────────────────────────── */
+    /* The May scale for the statement; the body at reading size beneath it */
     .hero-lead {
       font-family: var(--serif);
       font-weight: 300;
-      font-size: clamp(1.75rem, 3.5vw, 3rem);
-      line-height: 1.15;
-      letter-spacing: -0.015em;
+      font-size: clamp(2.5rem, 5.5vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
       color: var(--ink);
-      max-width: 52rem;
+      max-width: 60rem;
     }
-    .hero-lead .opening {
-      color: var(--ink);
-      display: block;
-    }
-    .hero-lead .pivot {
-      display: block;
-      font-weight: 400;
-      color: var(--rose-brown);
-      margin-top: 1.75rem;
-      padding-left: 4rem;
-      position: relative;
-      max-width: 48rem;
+    .hero-lead em {
       font-style: italic;
-      font-size: 0.85em;
-      line-height: 1.3;
-    }
-    .hero-lead .pivot::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.8em;
-      width: 2.75rem;
-      height: 1px;
-      background: var(--coral-sienna);
+      color: var(--rose-brown);
     }
     .hero-body {
-      max-width: 38rem;
-      margin-top: 2.5rem;
-      padding-left: 4rem;
-      font-size: 1.0625rem;
-      line-height: 1.65;
+      max-width: 36rem;
+      margin-top: 3rem;
+      font-size: 1.25rem;
+      line-height: 1.6;
       color: var(--charcoal);
     }
+    .nowrap { white-space: nowrap; }
     .hero-body em {
       font-style: italic;
       color: var(--rose-brown);
@@ -471,6 +451,80 @@
       color: var(--rose-brown);
       font-weight: 500;
     }
+    /* the pilot ask carries its own correspondence line, so the pinned one steps aside on this pane */
+    .now-contact {
+      margin-top: 2.25rem;
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+    .now-contact .label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--coral-sienna);
+    }
+    .now-contact a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--coral-sienna);
+      padding-bottom: 2px;
+      transition: color 0.4s ease;
+    }
+    .now-contact a:hover,
+    .now-contact a:focus { color: var(--rose-brown); }
+    @media (min-width: 901px) {
+      body[data-pane="2"] .contact-pinned { opacity: 0; pointer-events: none; }
+    }
+    /* ─── THE QUESTION (the May hero, now the closer) ────────────── */
+    .question-lead {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(2.5rem, 5.5vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 64rem;
+    }
+    .question-lead .quoted {
+      color: var(--charcoal);
+      display: block;
+      max-width: 40rem;
+    }
+    .question-lead .pivot {
+      display: block;
+      font-weight: 400;
+      color: var(--rose-brown);
+      margin-top: 1.5rem;
+      padding-left: 13rem;
+      position: relative;
+      max-width: 60rem;
+    }
+    .question-lead .pivot::before {
+      content: "";
+      position: absolute;
+      left: 6rem;
+      top: 0.85em;
+      width: 5rem;
+      height: 1px;
+      background: var(--coral-sienna);
+    }
+    .question-body {
+      max-width: 36rem;
+      margin-top: 3rem;
+      margin-left: 13rem;
+      font-size: 1.1875rem;
+      line-height: 1.65;
+      color: var(--charcoal);
+    }
+    .question-body em {
+      font-style: italic;
+      color: var(--rose-brown);
+    }
     /* ─── PANE 5: CLOSING MARK ───────────────────────────────────── */
     .pane-closing {
       justify-content: center;
@@ -555,15 +609,15 @@
         border-bottom: 1px solid var(--rule-soft);
       }
       .pane:last-of-type { border-bottom: none; }
-      .hero-lead .pivot {
+      .question-lead .pivot {
         padding-left: 1.5rem;
       }
-      .hero-lead .pivot::before {
+      .question-lead .pivot::before {
         left: 0;
         width: 1rem;
       }
-      .hero-body {
-        padding-left: 0;
+      .question-body {
+        margin-left: 0;
         margin-top: 2rem;
       }
       .research-grid {
@@ -652,12 +706,14 @@
       padding-top: max(7rem, 12vh);
       padding-bottom: max(8rem, 14vh);
     }
-    .hero-lead { font-size: clamp(1.4rem, min(3.5vw, 5vh), 3rem); }
-    .hero-lead .pivot { margin-top: clamp(0.9rem, 2.4vh, 1.75rem); }
-    .hero-body { margin-top: clamp(1.1rem, 3vh, 2.5rem); font-size: clamp(0.9rem, 1.8vh, 1.0625rem); line-height: 1.55; }
-    @media (max-height: 500px) and (min-width: 901px) {
-      .hero-body { display: none; }   /* on a very short window the lead + pivot carry the page; the body returns on the next pane */
-    }
+    .question-lead { font-size: clamp(2.2rem, min(5.5vw, 8.5vh), 5rem); }
+    .hero-lead { font-size: clamp(2.2rem, min(5.5vw, 8.5vh), 5rem); }
+    .hero-body { margin-top: clamp(1.25rem, 4.5vh, 3rem); font-size: clamp(1.05rem, 2.2vh, 1.25rem); }
+    .question-lead .pivot { margin-top: clamp(0.75rem, 2.4vh, 1.5rem); }
+    .now-lead { font-size: clamp(1.75rem, min(4.3vw, 7vh), 3.6rem); }
+    .now-body { margin-top: clamp(1rem, 3.5vh, 2.25rem); }
+    .now-contact { margin-top: clamp(1.25rem, 3.5vh, 2.25rem); }
+    .question-body { margin-top: clamp(1.25rem, 4.5vh, 3rem); font-size: clamp(1rem, 2.1vh, 1.1875rem); line-height: 1.6; }
     /* every pane: if the content is still taller than the band between the chromes, scroll it inside the band instead of overlapping */
     .pane-inner { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
     .pane-inner::-webkit-scrollbar { display: none; }
@@ -675,34 +731,16 @@
     <!-- Pane 0: Hero -->
     <section class="pane active" data-index="0">
       <div class="pane-inner">
-        <h1 class="hero-lead">
-          <span class="opening">Crews in isolated, high-stakes environments are assessed against population norms — an average of people who are not on the ship.</span>
-          <span class="pivot">Aether builds the other instrument. It reads the person’s own baseline — and the first eighteen-month record is already in hand.</span>
-        </h1>
+        <h1 class="hero-lead">We research<br /> <em>the humanity in technology.</em></h1>
         <p class="hero-body">
-          Sherry Moore, founder and Principal Investigator, works where behavioral health, human–machine teaming, and human–AI alignment meet: long-duration spaceflight, its analogs, and the offshore and industrial crews facing the same problem with a smaller denominator.
+          Aether Systems works where behavioral health, <span class="nowrap">human–machine</span> teaming, and <span class="nowrap">human–AI</span> alignment meet. Aether builds <span class="nowrap">behavioral-health</span> support for crews in isolated, <span class="nowrap">high-stakes</span> environments: spacecraft, analog habitats, and offshore platforms.
         </p>
       </div>
     </section>
-    <!-- Pane 1: The Perspective -->
+    <!-- Pane 1: Research Lines -->
     <section class="pane" data-index="1">
       <div class="pane-inner">
-        <div class="pane-label">§ 02 — The perspective</div>
-        <h2 class="what-lead">
-          An artist’s attention to <em>a technical problem.</em>
-        </h2>
-        <p class="what-body">
-          A decade of creative and commercial practice brings a perceptual discipline to a domain usually left to engineers: the measurable signal between a person and the adaptive systems they work alongside.
-        </p>
-        <p class="what-body">
-          The industry builds systems to extract, predict, and manage. Aether begins at the other end: <em>the person stays the subject and custodian of their own model.</em> Interpretation is co-calibrated, permission is ongoing, and the architecture starts from how a person actually engages.
-        </p>
-      </div>
-    </section>
-    <!-- Pane 2: Research Lines -->
-    <section class="pane" data-index="2">
-      <div class="pane-inner">
-        <div class="pane-label">§ 03 — The research</div>
+        <div class="pane-label">§ 02 — The research</div>
         <p class="research-intro">
           Four lines of research. One architecture.
         </p>
@@ -726,18 +764,31 @@
         </div>
       </div>
     </section>
-    <!-- Pane 3: The Work Now -->
-    <section class="pane" data-index="3">
+    <!-- Pane 2: The Work Now -->
+    <section class="pane" data-index="2">
       <div class="pane-inner">
-        <div class="pane-label">§ 04 — The work now</div>
+        <div class="pane-label">§ 03 — The work now</div>
         <h2 class="now-lead">
-          <em>Mission Chemistry</em> asks what behavioral signals mean — not merely whom they belong to.
+          Aether is not asking to use a crew. <em>It is offering to de-risk one.</em>
         </h2>
         <p class="now-body">
-          Identity-resolution systems connect fragmented observations to a person. Mission Chemistry asks what changing signals mean for that person and crew — and keeps the interpretation under participant control.
+          You bring the crew, the confinement, and the study funding. Aether brings the instrument, protocol, deployment, and analysis — and your crew keeps custody of their own baselines.
         </p>
-        <p class="now-ask">
-          <strong>Aether is not asking to use a crew. It is offering to de-risk one.</strong> You bring the crew, the confinement, and the study funding. Aether brings the instrument, protocol, deployment, and analysis — and your crew keeps custody of their own baselines. The prior is a decade deep and one person’s eighteen-month record already exists: the pilot tests rather than invents.
+        <p class="now-contact">
+          <span class="label">For correspondence</span>
+          <a href="mailto:sherrymoore@aethersystems.io">sherrymoore@aethersystems.io</a>
+        </p>
+      </div>
+    </section>
+    <!-- Pane 3: The Question (the May hero, now the closer) -->
+    <section class="pane" data-index="3">
+      <div class="pane-inner">
+        <h2 class="question-lead">
+          <span class="quoted">The question isn’t <em>“is AI conscious?”</em></span>
+          <span class="pivot">It’s what are we becoming&nbsp;together?</span>
+        </h2>
+        <p class="question-body">
+          The way you treat technology trains you as much as it trains the system. <em>Kindness, curiosity, and coherence</em> change the output — on both sides.
         </p>
       </div>
     </section>
