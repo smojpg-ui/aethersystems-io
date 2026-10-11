@@ -210,7 +210,7 @@
       max-width: 72rem;
     }
     /* ─── PANE 0: HERO ───────────────────────────────────────────── */
-    /* "We research" on the left, the rest sent to the right, the body centered beneath */
+    /* one sentence, one line; the body centered beneath it */
     .hero-lead {
       font-family: var(--serif);
       font-weight: 300;
@@ -218,14 +218,12 @@
       line-height: 1.05;
       letter-spacing: -0.02em;
       color: var(--ink);
+      text-align: center;
+      text-wrap: balance;
     }
-    .hero-lead .opening,
-    .hero-lead em { display: block; }
     .hero-lead em {
       font-style: italic;
       color: var(--rose-brown);
-      text-align: right;
-      margin-top: 0.1em;
     }
     .hero-body {
       max-width: 36rem;
@@ -717,7 +715,7 @@
     <!-- Pane 0: Hero -->
     <section class="pane active" data-index="0">
       <div class="pane-inner">
-        <h1 class="hero-lead"><span class="opening">We research</span> <em>the humanity in technology.</em></h1>
+        <h1 class="hero-lead">We research <em>the humanity in technology.</em></h1>
         <p class="hero-body">
           Aether Systems works where behavioral health, <span class="nowrap">human–machine</span> teaming, and <span class="nowrap">human–AI</span> alignment meet. Aether builds <span class="nowrap">behavioral-health</span> support for crews in isolated, <span class="nowrap">high-stakes</span> environments: spacecraft, analog habitats, and offshore platforms.
         </p>
