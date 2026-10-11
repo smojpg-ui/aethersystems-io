@@ -210,25 +210,14 @@
       max-width: 72rem;
     }
     /* ─── PANE 0: HERO ───────────────────────────────────────────── */
-    /* The statement sits quiet, indented behind the hairline; the body is where the eye lands */
+    /* The statement is a quiet header; the body is where the eye lands */
     .hero-lead {
-      position: relative;
-      margin-left: 13rem;
       font-family: var(--serif);
       font-weight: 300;
       font-size: 1.75rem;
       line-height: 1.3;
       letter-spacing: -0.005em;
       color: var(--charcoal);
-    }
-    .hero-lead::before {
-      content: "";
-      position: absolute;
-      left: -7rem;
-      top: 0.7em;
-      width: 5rem;
-      height: 1px;
-      background: var(--coral-sienna);
     }
     .hero-lead em {
       font-style: italic;
@@ -621,14 +610,6 @@
         border-bottom: 1px solid var(--rule-soft);
       }
       .pane:last-of-type { border-bottom: none; }
-      .hero-lead {
-        margin-left: 0;
-        padding-left: 1.75rem;
-      }
-      .hero-lead::before {
-        left: 0;
-        width: 1rem;
-      }
       .question-lead .pivot {
         padding-left: 1.5rem;
       }
