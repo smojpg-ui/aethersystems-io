@@ -196,7 +196,9 @@
       color: var(--ink);
       margin-bottom: clamp(1.5rem, 4.2vh, 2.5rem);
     }
-    .statement em { font-style: italic; color: var(--rose-brown); }
+    .statement .opening,
+    .statement em { display: block; }
+    .statement em { font-style: italic; color: var(--rose-brown); text-align: right; margin-top: 0.1em; }
     .lede {
       font-family: var(--serif);
       font-weight: 400;
@@ -204,6 +206,9 @@
       line-height: 1.6;
       color: var(--charcoal);
       max-width: 31.75em;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
     }
 
     /* page 1 */
@@ -333,7 +338,7 @@
   <main class="stage">
     <section class="page page-overview is-current" id="p0" data-page="0">
       <div class="page-inner">
-        <h1 class="statement">We research<br /> <em>the humanity in technology.</em></h1>
+        <h1 class="statement"><span class="opening">We research</span> <em>the humanity in technology.</em></h1>
         <p class="lede">Aether Systems works where behavioral health, <span class="nowrap">human–machine</span> teaming, and <span class="nowrap">human–AI</span> alignment meet. Aether builds <span class="nowrap">behavioral-health</span> support for crews in isolated, <span class="nowrap">high-stakes</span> environments: spacecraft, analog habitats, and offshore platforms.</p>
       </div>
     </section>
