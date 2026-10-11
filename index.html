@@ -137,7 +137,7 @@
       border-bottom-color: var(--coral-sienna);
     }
     /* closing pane is now index 5 */
-    body[data-pane="4"] .contact-pinned { opacity: 0.5; }
+    body[data-pane="5"] .contact-pinned { opacity: 0.5; }
     /* ─── ARROW NAVIGATION (no numbers) ──────────────────────────── */
     .nav-arrows {
       display: flex;
@@ -210,47 +210,37 @@
       max-width: 72rem;
     }
     /* ─── PANE 0: HERO ───────────────────────────────────────────── */
+    /* The May scale: one big line, then the body indented behind a hairline */
     .hero-lead {
       font-family: var(--serif);
       font-weight: 300;
-      font-size: clamp(1.75rem, 3.5vw, 3rem);
-      line-height: 1.15;
-      letter-spacing: -0.015em;
+      font-size: clamp(2.5rem, 5.5vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
       color: var(--ink);
-      max-width: 52rem;
+      max-width: 60rem;
     }
-    .hero-lead .opening {
-      color: var(--ink);
-      display: block;
-    }
-    .hero-lead .pivot {
-      display: block;
-      font-weight: 400;
-      color: var(--rose-brown);
-      margin-top: 1.75rem;
-      padding-left: 4rem;
-      position: relative;
-      max-width: 48rem;
+    .hero-lead em {
       font-style: italic;
-      font-size: 0.85em;
-      line-height: 1.3;
-    }
-    .hero-lead .pivot::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.8em;
-      width: 2.75rem;
-      height: 1px;
-      background: var(--coral-sienna);
+      color: var(--rose-brown);
     }
     .hero-body {
-      max-width: 38rem;
-      margin-top: 2.5rem;
-      padding-left: 4rem;
-      font-size: 1.0625rem;
+      position: relative;
+      max-width: 36rem;
+      margin-top: 3rem;
+      margin-left: 13rem;
+      font-size: 1.1875rem;
       line-height: 1.65;
       color: var(--charcoal);
+    }
+    .hero-body::before {
+      content: "";
+      position: absolute;
+      left: -7rem;
+      top: 0.8em;
+      width: 5rem;
+      height: 1px;
+      background: var(--coral-sienna);
     }
     .hero-body em {
       font-style: italic;
@@ -471,6 +461,51 @@
       color: var(--rose-brown);
       font-weight: 500;
     }
+    /* ─── PANE 4: THE QUESTION (the May hero, now the closer) ────── */
+    .question-lead {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(2.5rem, 5.5vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 64rem;
+    }
+    .question-lead .quoted {
+      color: var(--charcoal);
+      display: block;
+      max-width: 40rem;
+    }
+    .question-lead .pivot {
+      display: block;
+      font-weight: 400;
+      color: var(--rose-brown);
+      margin-top: 1.5rem;
+      padding-left: 13rem;
+      position: relative;
+      max-width: 60rem;
+    }
+    .question-lead .pivot::before {
+      content: "";
+      position: absolute;
+      left: 6rem;
+      top: 0.85em;
+      width: 5rem;
+      height: 1px;
+      background: var(--coral-sienna);
+    }
+    .question-body {
+      max-width: 36rem;
+      margin-top: 3rem;
+      margin-left: 13rem;
+      font-size: 1.1875rem;
+      line-height: 1.65;
+      color: var(--charcoal);
+    }
+    .question-body em {
+      font-style: italic;
+      color: var(--rose-brown);
+    }
     /* ─── PANE 5: CLOSING MARK ───────────────────────────────────── */
     .pane-closing {
       justify-content: center;
@@ -555,15 +590,24 @@
         border-bottom: 1px solid var(--rule-soft);
       }
       .pane:last-of-type { border-bottom: none; }
-      .hero-lead .pivot {
-        padding-left: 1.5rem;
+      .hero-body {
+        margin-left: 0;
+        padding-left: 1.75rem;
+        margin-top: 2rem;
       }
-      .hero-lead .pivot::before {
+      .hero-body::before {
         left: 0;
         width: 1rem;
       }
-      .hero-body {
-        padding-left: 0;
+      .question-lead .pivot {
+        padding-left: 1.5rem;
+      }
+      .question-lead .pivot::before {
+        left: 0;
+        width: 1rem;
+      }
+      .question-body {
+        margin-left: 0;
         margin-top: 2rem;
       }
       .research-grid {
@@ -652,12 +696,11 @@
       padding-top: max(7rem, 12vh);
       padding-bottom: max(8rem, 14vh);
     }
-    .hero-lead { font-size: clamp(1.4rem, min(3.5vw, 5vh), 3rem); }
-    .hero-lead .pivot { margin-top: clamp(0.9rem, 2.4vh, 1.75rem); }
-    .hero-body { margin-top: clamp(1.1rem, 3vh, 2.5rem); font-size: clamp(0.9rem, 1.8vh, 1.0625rem); line-height: 1.55; }
-    @media (max-height: 500px) and (min-width: 901px) {
-      .hero-body { display: none; }   /* on a very short window the lead + pivot carry the page; the body returns on the next pane */
-    }
+    .hero-lead,
+    .question-lead { font-size: clamp(2.2rem, min(5.5vw, 8.5vh), 5rem); }
+    .question-lead .pivot { margin-top: clamp(0.75rem, 2.4vh, 1.5rem); }
+    .hero-body,
+    .question-body { margin-top: clamp(1.25rem, 4.5vh, 3rem); font-size: clamp(1rem, 2.1vh, 1.1875rem); line-height: 1.6; }
     /* every pane: if the content is still taller than the band between the chromes, scroll it inside the band instead of overlapping */
     .pane-inner { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
     .pane-inner::-webkit-scrollbar { display: none; }
@@ -675,12 +718,9 @@
     <!-- Pane 0: Hero -->
     <section class="pane active" data-index="0">
       <div class="pane-inner">
-        <h1 class="hero-lead">
-          <span class="opening">Crews in isolated, high-stakes environments are assessed against population norms — an average of people who are not on the ship.</span>
-          <span class="pivot">Aether builds the other instrument. It reads the person’s own baseline — and the first eighteen-month record is already in hand.</span>
-        </h1>
+        <h1 class="hero-lead">We research<br /> <em>the humanity in technology.</em></h1>
         <p class="hero-body">
-          Sherry Moore, founder and Principal Investigator, works where behavioral health, human–machine teaming, and human–AI alignment meet: long-duration spaceflight, its analogs, and the offshore and industrial crews facing the same problem with a smaller denominator.
+          Aether Systems works where behavioral health, human–machine teaming, and human–AI alignment meet.
         </p>
       </div>
     </section>
@@ -741,8 +781,20 @@
         </p>
       </div>
     </section>
-    <!-- Pane 4: Closing Mark -->
-    <section class="pane pane-closing" data-index="4">
+    <!-- Pane 4: The Question (the May hero, now the closer) -->
+    <section class="pane" data-index="4">
+      <div class="pane-inner">
+        <h2 class="question-lead">
+          <span class="quoted">The question isn’t <em>“is AI conscious?”</em></span>
+          <span class="pivot">It’s what are we becoming&nbsp;together?</span>
+        </h2>
+        <p class="question-body">
+          The way you treat technology trains you as much as it trains the system. <em>Kindness, curiosity, and coherence</em> change the output — on both sides.
+        </p>
+      </div>
+    </section>
+    <!-- Pane 5: Closing Mark -->
+    <section class="pane pane-closing" data-index="5">
       <div class="closing-mark">æ</div>
     </section>
   </div>
