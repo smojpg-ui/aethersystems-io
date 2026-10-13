@@ -293,7 +293,7 @@
       .toc a[aria-current="true"]::before { display: none; }
       .panel-foot { display: none; }
       .stage { overflow: visible; }
-      .page { position: static; opacity: 1; visibility: visible; padding: 3.25rem 1.5rem; border-bottom: 1px solid var(--rule); }
+      .page { position: static; opacity: 1; visibility: visible; padding: 3.25rem 1.5rem; border-bottom: 1px solid var(--rule); scroll-margin-top: var(--panel-h, 6.25rem); }
       .grid { grid-template-columns: 1fr; }
       .page-closing { padding: 4rem 1.5rem 5rem; }
       .lead { font-size: 1.75rem; }
@@ -390,10 +390,22 @@
       nextBtn.disabled = i === pages.length - 1;
     }
     document.querySelectorAll('[data-goto]').forEach(el => el.addEventListener('click', e => {
-      if (narrow()) return;
+      if (narrow()) { goTo(+el.dataset.goto); return; } // phones: native anchor jump, marker follows
       e.preventDefault();
       goTo(+el.dataset.goto);
     }));
+    // Phones: the spine is a sticky bar, so anchors land below it, and the marker follows the scroll.
+    const panel = document.querySelector('.panel');
+    const setPanelH = () => document.documentElement.style.setProperty('--panel-h', panel.offsetHeight + 'px');
+    setPanelH(); window.addEventListener('resize', setPanelH);
+    if (document.fonts) document.fonts.ready.then(setPanelH);
+    if ('IntersectionObserver' in window) {
+      const spy = new IntersectionObserver(entries => {
+        if (!narrow()) return;
+        entries.forEach(en => { if (en.isIntersecting) goTo(+en.target.dataset.page); });
+      }, { rootMargin: '-35% 0px -60% 0px' });
+      pages.forEach(pg => spy.observe(pg));
+    }
     prevBtn.addEventListener('click', () => goTo(current - 1));
     nextBtn.addEventListener('click', () => goTo(current + 1));
     document.addEventListener('keydown', e => {
